@@ -2,7 +2,7 @@
 
 ## Bloque 1 - Java
 
-### 1) Es desitja realitzar una aplicació per mòbils per gestionar les despeses d’una targeta bancària. Aquesta aplicació ha de permetre desar les dades pròpies de la targeta i gestionar els pagaments realitzats.
+### 1) Se desea realizar una aplicación para móviles para gestionar los gastos de una targeta bancária. Esta aplicación tiene que permitir guardar los datos propios de la targeta i gestionar los pagos realizados.
 
 #### Desarrollo mental
 

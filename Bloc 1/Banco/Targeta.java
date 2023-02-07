@@ -1,93 +1,96 @@
 package Banco;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Targeta { 
-    private Integer num;
-    private String estat;
-    private String nom;
-    private Compra compra;
+    private String num_targe; //uso una string para que pueda recorrerla con un for
+    private String titular;
+    private String estado;
+    private ArrayList<Compra> listaCompra = new ArrayList<Compra>();
 
     //getters i setters
-    public int getNum(){
-        return num;
+
+    public String getNum_targe() {
+        return num_targe;
     }
 
-    public void setNum(int num){
-        this.num = num;
+    public void setNum_targe(String num_targe) {
+        this.num_targe = num_targe;
     }
 
-    public String getEstat(){
-        return estat;
+    public String getTitular() {
+        return titular;
     }
 
-    public void setEstat(String estat){
-        this.estat = estat;
+    public void setTitular(String titular) {
+        this.titular = titular;
     }
 
-    public String getNom(){
-        return nom;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setNom(String nom){
-        this.nom = nom;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public Compra getCompra(){
-        return compra;
+    public ArrayList<Compra> getListaCompra() {
+        return listaCompra;
     }
 
-    public void setCompra(Compra compra){
-        this.compra = compra;
-    }
-    //constructors
-
-    //constructor vacio
-    public Targeta(){
-        this.num = 0;
-        this.estat = "";
-        this.nom = "";
-        this.compra = compra;
+    public void setListaCompra(ArrayList<Compra> listaCompra) {
+        this.listaCompra = listaCompra;
     }
 
-    //constructo completo
-    public Targeta(int num, String estat, String nom, String dades){
-        this.setNum(num);
-        this.setEstat(estat);
-        this.setNom(nom);
-        this.setCompra(compra);
+    //constructores
+
+    public Targeta() {
+        this.num_targe = "";
+        this.titular = "";
+        this.estado = "";
     }
 
-    //métodes
-    @Override
+    public Targeta(String num_targe, String titular, String estado) {
+        this.num_targe = num_targe;
+        this.titular = titular;
+        this.estado = estado;
+    }
+
+    //creame un método toString para mostrar los datos de la targeta con forma de tabla con asteriscos
+        @Override
     public String toString(){
-        return "Targeta [num= " + num + ", nom= " + nom + ", estat= " + estat +']';
+        return "***************" + " num_targe= " + num_targe + ", titular= " + titular + ", estado= " + estado + "***************";
     }
 
-    //afegir una compra
-    public static void afegirCompra(){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Introdueix el nom de l'establiment: ");
-        String establecimiento = sc.nextLine();
-        System.out.println("Introdueix el preu de la compra: ");
-        float precio = sc.nextFloat();
-        Compra compra = new Compra(establecimiento, precio);
-        
+/*     @Override
+    public String toString() {
+        return " Visa imaginBank [" + " num_targe= " + num_targe + ", titular= " + titular + ", estado= " + estado + ']';
+    } */
 
+    public void addCompra(String establicimiento, float precio){
+        Compra compra = new Compra(establicimiento, precio);
+        this.listaCompra.add(compra);
     }
 
-    //llistar compres
-    public static String retornarCompres(int n){
-        return "Compra [establecimiento= " + establecimiento + ", precio= " + precio + "]";
-    }
-
-    //tapar numero targeta
-    public static String taparNum(Integer num){
-        String converted = "";
-        for(int i = 0; i < num; i++){
-            converted = num + "*";
+    public void mostrarCompras(int n){
+        int contador = 0;
+        for (int i = listaCompra.size() - 1; i >= 0; i--) {
+            if(contador < n){
+                System.out.println(listaCompra.get(i));
+                contador++;
+            }
         }
-        return converted;
+    }
+
+    public void escondeNum(){
+        String numOculto = "";
+        for (int i = 0; i < num_targe.length(); i++) {
+            if(i < 12){
+                numOculto += "*";
+            }else{
+                numOculto += num_targe.charAt(i);
+            }
+        }
+        System.out.println("El numero de la targeta es: " + numOculto);
     }
 }
