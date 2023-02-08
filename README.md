@@ -1,20 +1,6 @@
-<style> 
-    * { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; } 
-    .portada { 
-        font-size: 4em; display: table; height: 25cm; 
-    } 
-    .contenido { 
-        display: table-cell; vertical-align: middle; 
-    } 
-</style>
+# Trabajo de Recuperación
 
-<div class="portada">
-    <div class="contenido"><p>Recuperación Java</p></div>
-</div>
-
-<div style="page-break-after: always;"></div
-
-# Bloque 1 - Java
+## Bloque 1 - Java
 
 ### 1) Se desea realizar una aplicación para móviles para gestionar los gastos de una targeta bancária. Esta aplicación tiene que permitir guardar los datos propios de la targeta i gestionar los pagos realizados.
 
