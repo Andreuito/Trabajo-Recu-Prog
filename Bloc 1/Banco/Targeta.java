@@ -59,26 +59,26 @@ public class Targeta {
     // metodos
 
     @Override
-    public String toString() {
+    public String toString() { // creo un metodo toString para mostrar solo el numero de la targeta
         return " Visa imaginBank " + num_targe;
     }
 
-    public void addCompra(String establicimiento, float precio) { // creo un metodo para añadir compras
+    public void addCompra(String establicimiento, float precio) { 
         Compra compra = new Compra(establicimiento, precio); // creo un objeto compra
         this.listaCompra.add(compra); // añado el objeto compra a la lista
     }
 
-    public void mostrarCompras(int n) { // creo un metodo para mostrar las ultimas n compras
-        int contador = 0;
+    public void mostrarCompras(int n) { 
+        int contador = 0; // creo un contador para que solo muestre las ultimas n compras
         for (int i = listaCompra.size() - 1; i >= 0; i--) { // recorro la lista de compras de atras para adelante
-            if (contador < n) {
+            if (contador < n) { 
                 System.out.println(listaCompra.get(i)); // muestro la compra
                 contador++;
             }
         }
     }
  
-    public void escondeNum() { // creo un metodo para ocultar los 12 primeros numeros de la targeta
+    public void escondeNum() { 
         String numOculto = "";
         for (int i = 0; i < num_targe.length(); i++) { // recorro la targeta
             if (i < 12) {

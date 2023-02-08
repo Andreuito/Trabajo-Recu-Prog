@@ -1,18 +1,119 @@
-# Trabajo de recuperación
+<style> 
+    * { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; } 
+    .portada { 
+        font-size: 4em; display: table; height: 25cm; 
+    } 
+    .contenido { 
+        display: table-cell; vertical-align: middle; 
+    } 
+</style>
 
-## Bloque 1 - Java
+<div class="portada">
+    <div class="contenido"><p>Recuperación Java</p></div>
+</div>
+
+<div style="page-break-after: always;"></div
+
+# Bloque 1 - Java
 
 ### 1) Se desea realizar una aplicación para móviles para gestionar los gastos de una targeta bancária. Esta aplicación tiene que permitir guardar los datos propios de la targeta i gestionar los pagos realizados.
 
-#### Desarrollo mental
+### Desarrollo mental
+Para este ejercicio así de primeras buscaba una posible herencia entre clases cosa que depués de leerla me di cuenta de que no.
+Primero me pongo a leer los atributos y que tipo de atributos son, es decir, String, booleano o integer, pero me encuentro con el primer
+dilema que es que tipo de dato es el último atributo, en el examen no supe identificarlo y utilicé una ArrayList, pero al llegar a casa me di cuenta inmediatamente, era crear otra clase llamada compra que contendrá los atributos de establecimiento y precio donde establecimiento es   String y float, esta clase compra únicamente contendrá el método para mostrar los datos de la clase compra.
 
-#### Desarrollo de código
+Una vez creada la clase como dice el enunciado debemos guardar los datos en un atributo por tanto decido usar una ArrayList de compra en la que
+contendrá los datos de compra.
 
-## Bloque 2 - Python
+Una vez comprendido la estructura del programa ahora solo queda definir getters, setters, constructores y sus respectivos métodos y por último crear la clase menú que contendrá el main del programa donde antes del main se debe crear el método validar y luego dentro del main mediante de los métodos creados dentro de la clase Targeta.
+
+Una vez está todo definido el programa funciona de la siguiente manera: Creamos una targeta manualmente (Se podría hacer por teclado pero el enunciado no lo especifíca), la targeta se crea haciendo un objeto nuevo de targeta asignandole un numero, un nombre y su estado. Luego pasa por una función que valida que la targeta sea de 16 dígitos y su estado esté activo. Más adelante creo 6 compras con el método añadir compra y metiendo los valores por parámetro que son los definidos previamente en la clase compra y el método los guarda dentro de la ArrayList. 
+Por último uso un método para mostrar las 'n' compras últimas, en este caso en vale 4 y, por tanto, muestra las últimas 4 compras realizadas.
+
+### Desarrollo de código
+
+En este apartado explicaré cómo funcionan los métodos y las tomas de decisiones sobre las iteraciones. 
+
+##### Clase Targeta
+
+Para empezar en la definición de los atributos el numero de la targeta considero que es mejor usar String ` private String num_targe` para así dentro del bucle poder recorrer la cadena con una funcion de java que es `num_targe.length()` en cambio sí usara el tipo de dato Integer tendría que pasarla momentániamente a String pero cómo no he hacer ningún tipo de operación con los números considero mejor definirla directamente como cadena de carácteres.
+
+Luego para seguir los principios de la programación orientada a objetos después de los atributos se definirán los getters y setters que básicamente sirven para acceder a los atributos ya que son privados y poder obtener el valor (get) o darle valor (set). Una vez hechos los getters y setters pasamos a crear los constructores, debemos crear 2, el constructor vacio y el constructor completo. 
+
+El constructor vacio sirve para crear objetos vacios en este caso targeta tal que así:
+```
+public Targeta() {
+    this.num_targe = "";
+    this.titular = "";
+    this.estado = "";
+}
+```
+Y el constructor completo sirve para crear objetos completos de targeta tal que así:
+```
+public Targeta(String num_targe, String titular, String estado) { 
+    this.num_targe = num_targe;
+    this.titular = titular;
+    this.estado = estado;
+}
+```
+Pasamos a lo último que se debe añadir que son los métodos y siguiendo el enunciado dice que debe haber 3 métodos, pero en este caso he creído conveniente usar un método más que es el método `toString()` para mostrar por terminal los datos de targeta, pero no todos, solo he creído conveniente mostrar el número de la targeta.
+
+##### Método addCompra()
+
+Para este método lo primero que había que hacer era pasarle por parámetro los atributos de compra y luego dentro del método lo único que había que hacer era crear un objeto compra donde las variables que le pasamos por parámetro sean los que le pasamos creando el nuevo objeto y finalmente añade la compra a la lista de compras de la clase targeta de la siguiente manera:
+```
+public void addCompra(String establicimiento, float precio) { 
+    Compra compra = new Compra(establicimiento, precio);
+    this.listaCompra.add(compra);
+}
+```
+
+##### Método mostrarCompras()
+
+Para este método se le tiene que pasar por parámetro un integer 'n' donde n puede valer lo que queramos luego dentro del método primero creamos un contador para que solo me muestre las n compras luego hacemos un bucle for el cual recorre la lista de compras de atrás hacia adelante y luego si el contador es más pequeño que n quiero que me muestre la compra usando un if y luego que me sume el contador cada iteración hasta que el contador sea más grande que n. En otras palabras que haga tantas vueltas como n sea, si n fuera 3, pues 3 vueltas me va a dar. Esto en código es tal que así:
+
+```
+public void mostrarCompras(int n) { 
+    int contador = 0; 
+    for (int i = listaCompra.size() - 1; i >= 0; i--) {
+        if (contador < n) { 
+            System.out.println(listaCompra.get(i));
+            contador++;
+        }
+    }
+}
+```
+
+##### Método escondeNum()
+
+En este caso el método no necesita que le pasen nada por parámetro por tanto en dentro del método lo primero que debemos hacer es crear una variable que contendrá el número tapado con asteriscos y por ende el que se mostrará por pantalla. Una vez definida la variable de tipo string vacía que la llamaremos `String numOculto = "";` usaremos la iteración for para recorrer el atributo `private String num_targe;`  con el método `.length()` donde el bucle recorrerá toda la string una vez dentro del bucle le pondremos una condición if en la que cuando la posición sea menor que 12 me añadas un asterisco a cada vuelta por posición de 'i' es decir primera vuelta i = 0 añadem un * en la variable numOculto. 
+Una vez la posición es mayor que 12 entra en un else en la que juntaremos lo que queda de numero de targeta con los asteriscos 
+consiguiendo así algo tal que así: **** **** **** 3452 y el códgio es:
+```
+public void escondeNum() { 
+    String numOculto = "";
+    for (int i = 0; i < num_targe.length(); i++) {
+        if (i < 12) {
+            numOculto += "*"; 
+        } else {
+            numOculto += num_targe.charAt(i); 
+        }
+    }
+    System.out.println(numOculto);
+}
+```
+
+##### Clase Compra
+
+
+
+
+# Bloque 2 - Python
 
 ### 2. Crea un programa en Java o en Python que genere una matriz de 3x3 con valores aleatorios i que primero la muestre por pantalla y después muestre su matriz traspuesta.
 
-#### Desarrollo mental 
+#### Desarrollo mental
 
 Primero para este ejercicio se tiene que decidir que lenguaje usar, y por comodidad para ejecutar el programa consecutivas veces para usar la técnica ensayo-error considero que el mejor lenguaje es Python.
 
@@ -26,14 +127,14 @@ El ejercico me pide que haga una matriz de 3x3 con numeros aleatorios por tanto 
 
 Luego debemos crear una lista vacia `numeros = []` que contendra los numeros aleatorios que generaremos más adelante.
 
-###### Matriz 3x3
+##### Matriz 3x3
 
 Para crear una matriz de 3x3, lo iteraremos con 'for', primero con este bucle generamos 3 filas `for i in range(3)`. Una vez dentro del bucle añadimos una lista vacia a la lista de numeros `numeros.append([])` y despues para generar las 3 columnas usaremos otro bucle for `for j in range(3)` y dentro de este bucle por cada numero de i le añadiremos numeros aleatorios ala lista con la siguiente funcion `numeros[i].append(random.randint(0,9))` que esta funcion viene de la libreria mencionada anteriormente. 
 Después de añadir los numeros aleatorios lo debemos mostrar por pantalla mostrando cada posicion de cada bucle de la siguiente manera: `print(numeros[i][j], end=" "` y luego de imprimir el numero la funcion `end=""` lo que hace es generar un espacio en blanco. 
 
 Para que luego no salgan los numeros desordenados se imprime un salto de linia con print vacío tal que así: `print()`
 
-###### Matriz 3x3 traspuesta
+##### Matriz 3x3 traspuesta
 
 Primero crearemos otro espacio en blanco para separar ambas matrices con `print()`
 
