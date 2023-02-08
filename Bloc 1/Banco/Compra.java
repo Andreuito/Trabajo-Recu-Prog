@@ -3,7 +3,7 @@ package Banco;
 
 public class Compra { // creo la clase compra para poder guardar los datos de las compras
     private String establicimiento;
-    private float precio;
+    private float precio; // uso float para poder guardar los decimales
 
     // getters i setters
 

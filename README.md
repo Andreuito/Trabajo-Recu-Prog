@@ -92,8 +92,27 @@ public void escondeNum() {
 
 ##### Clase Compra
 
+Esta clase ha sido creada para poder almacenar los datos de compra y poder crear objetos por tanto contiene los atributos privados de tipo String para establecimiento y float para el precio, uso float porque los precios suelen tener décimales y si lo pongo de tipo integer no me deja usar décimales.
+
+Por último esta clase contiene un método para mostras los datos de la compra y es tal que así:
+
+```
+@Override
+public String toString() {
+    return "  El establicimiento es -> " + establicimiento + " y su precio es -> " + precio + " euros" ;
+}
+```
 
 
+##### Clase Menu
+
+En esta clase es un poco diferente a las demás porque esta contiene el main que es una funcion para iniciar el programa y mostra los datos por terminal o los métodos.
+
+Por tanto, dispondrá de dos métodos: 
+
+##### Método validarTargeta()
+
+Este método se le pasará por parámetro una targeta y luego dentro del método 
 
 # Bloque 2 - Python
 

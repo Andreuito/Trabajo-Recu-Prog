@@ -2,8 +2,8 @@ package Banco;
 
 public class menu {
 
-    public static boolean validarTargeta(Targeta targeta){ // creo un metodo para validar la targeta
-        boolean valid = false;
+    public static boolean validarTargeta(Targeta targeta){
+        boolean valid = false; // creo una variable booleana para comprobar si la targeta es valida o no
         if (targeta.getNum_targe().length() == 16 && targeta.getEstado().equals("Activa")){ // compruebo que el numero de la targeta tenga 16 digitos y que el estado sea activo
             valid = true;
         }
