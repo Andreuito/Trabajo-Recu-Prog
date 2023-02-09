@@ -21,24 +21,25 @@ public class menu {
 
         if (validarTargeta(targeta1)){ // compruebo si la targeta es valida
             System.out.println("La targeta es válida");
+
+            System.out.println("");
+            targeta1.addCompra("Farmacia", 8.60f);
+            targeta1.addCompra("Agencia de viajes", 90.88f);
+            targeta1.addCompra("Mercadona", 12.55f);
+            targeta1.addCompra("Cafeteria", 4.50f);
+            targeta1.addCompra("Mecánico", 40.00f);
+            targeta1.addCompra("Tienda de deportes", 29.95f);
+    
+            System.out.println("Mostrando las ultimas 4 compras realizadas con la targeta");
+            targeta1.escondeNum();
+    
+            System.out.println("");
+            targeta1.mostrarCompras(4); // muestro las ultimas 4 compras
+            System.out.println("");
+
         }else{
             System.out.println("La targeta no es válida");
-        }
-
-        System.out.println("");
-        targeta1.addCompra("Farmacia", 8.60f);
-        targeta1.addCompra("Agencia de viajes", 90.88f);
-        targeta1.addCompra("Mercadona", 12.55f);
-        targeta1.addCompra("Cafeteria", 4.50f);
-        targeta1.addCompra("Mecánico", 40.00f);
-        targeta1.addCompra("Tienda de deportes", 29.95f);
-
-        System.out.println("Mostrando las ultimas 4 compras realizadas con la targeta");
-        targeta1.escondeNum();
-
-        System.out.println("");
-        targeta1.mostrarCompras(4); // muestro las ultimas 4 compras
-        System.out.println("");
+        };
     }
 }
 

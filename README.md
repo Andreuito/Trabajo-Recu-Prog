@@ -112,7 +112,34 @@ Por tanto, dispondrá de dos métodos:
 
 ##### Método validarTargeta()
 
-Este método se le pasará por parámetro una targeta y luego dentro del método 
+Este método se le pasará por parámetro una targeta y luego dentro del método lo primero que se debe hacer es crear una variable booleana llamada `boolean valid = false;` ya que este método devuelve un booleano luego usaremos una condición if donde comprobaremos que el número de la targeta sean 16 dígitos y que su estado sea activo, en el caso que si sea así la variable 'valid' será true y por tanto finalmente me devuelve la variable tanto si es true o false. El código se vería tal que así:
+```
+public static boolean validarTargeta(Targeta targeta){ 
+    boolean valid = false;
+    if (targeta.getNum_targe().length() == 16 && targeta.getEstado().equals("Activa")){
+        valid = true;
+    }
+    return valid;
+}
+```
+
+##### Método public static void main (String [] args)
+
+Este método como comentaba previamente es el encargado de que el programa 'arranque' y por tanto dentro de este método lo primero que hay que hacer es crear un objeto targeta que lo llamaremos 'targeta1' y le debemos pasar por parámetro los atributos de targeta, número, nombre, etc...
+Para así poder primero comprobar que el constructor targeta funciona correctamente y poder trabajar con una targeta y añadirle compras.
+
+Antes de añadirle compras primero mostraremos con la funcion `targeta1.toString()` los datos de la targeta creada.
+
+Además debemos hacer una condición if para usar el método `validarTargeta(Targeta targeta)` el cual si el resultado del método es 'True' este deberá primero mostrar por pantalla que un `System.out.println("La targeta es válida")` que nos dice que la targeta es válida.
+
+Para añadirle compras usaremos el método `addcCompras()` en el cual por parámetro le pasaremos los atributos de compras, en este caso establecimiento y precio de la siguiente manera:
+`targeta1.addCompra("Farmacia", 8.60f);` la 'f' es por el tipo de dato float.
+
+Por último la condición if usaremos el método `targeta1.mostrarCompras(4)` en cual mostrará las 4 últimas compras.
+
+Si en la condición no se cumple la validación de la targeta, entra en 'else' y motrará por pantalla que la targeta no es válida.
+
+Finalizando así el programa sobre la gestión de una targeta bancaria.
 
 # Bloque 2 - Python
 
